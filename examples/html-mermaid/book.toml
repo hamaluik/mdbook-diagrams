@@ -11,4 +11,6 @@ language_prefix = ""
 kroki_timeout_sec = 5
 filename_prefix = "diagram-"
 
-# [output.markdown]
+[preprocessor.diagrams.diagram_options]
+theme = "forest"
+look = "handDrawn"

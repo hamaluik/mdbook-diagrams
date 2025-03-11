@@ -53,7 +53,15 @@ output_format = "svg" # can be "svg" or "png"
 kroki_url = "https://kroki.io" # change the root URL of the Kroki service
 language_prefix = "" # if set, only code blocks with this language prefix will be processed (i.e., set this to "diagram-" then use code blocks with language "diagram-mermaid" to render mermaid diagrams)
 kroki_timeout_sec = 5 # timeout in seconds for requests to Kroki
-filename_prefix = "diagram-" # prefix for temporary files. Files will be saved to /tmp/<filename_prefix><hash>.<output_format>
+filename_prefix = "diagram-" # prefix for temporary files. Files will be saved to /<files_path>/<filename_prefix><hash>.<output_format>
+files_path = "src" # path to save temporary files, if not configured, will use the tmp folder
+
+[preprocessor.diagrams.diagram_options]
+# key-value pairs of Kroki diagram options
+# (see https://docs.kroki.io/kroki/setup/diagram-options/)
+# for example, set the plantuml theme to "amiga" and the mermaid look to "handDrawn"
+theme = "amiga"
+look = "handDrawn"
 ```
 
 ## Installation

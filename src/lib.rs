@@ -1,4 +1,4 @@
-use std::{path::PathBuf, time::Duration};
+use std::{collections::HashMap, path::PathBuf, time::Duration};
 
 use mdbook::{
     book::Book,
@@ -23,6 +23,7 @@ struct Config {
     kroki_timeout: Option<Duration>,
     filename_prefix: String,
     files_path: PathBuf,
+    diagram_options: HashMap<String, String>,
 }
 
 impl Default for Config {
@@ -34,6 +35,7 @@ impl Default for Config {
             kroki_timeout: None,
             filename_prefix: "diagram-".to_string(),
             files_path: std::env::temp_dir(),
+            diagram_options: HashMap::new(),
         }
     }
 }
@@ -93,6 +95,18 @@ impl Preprocessor for DiagramsPreprocessor {
                     if !files_path.is_empty() {
                         config.files_path = PathBuf::from(files_path);
                         std::fs::create_dir_all(&config.files_path).map_err(Error::msg)?;
+                    }
+                }
+            }
+
+            if let Some(diagram_options) = config_in.get("diagram_options") {
+                if let Some(diagram_options) = diagram_options.as_table() {
+                    for (key, value) in diagram_options {
+                        if let Some(value) = value.as_str() {
+                            config
+                                .diagram_options
+                                .insert(key.to_string(), value.to_string());
+                        }
                     }
                 }
             }

@@ -11,6 +11,9 @@ language_prefix = ""
 kroki_timeout_sec = 5
 filename_prefix = "diagram-"
 
+[preprocessor.diagrams.diagram_options]
+theme = "amiga"
+
 [output.pandoc.profile.pdf]
 output-file = "example.pdf"
 to = "latex"

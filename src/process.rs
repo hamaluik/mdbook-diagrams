@@ -205,6 +205,9 @@ fn render_kroki(
             diagram_options["html-labels"] = "false".into();
         }
     }
+    for (key, value) in &config.diagram_options {
+        diagram_options[key] = serde_json::Value::String(value.clone());
+    }
 
     let req = json!({
         "diagram_source": diagram,
