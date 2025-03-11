@@ -1,0 +1,20 @@
+[package]
+name = "mdbook-diagrams"
+authors = ["Kenton Hamaluik <kenton@hamaluik.ca>"]
+description = "A preprocessor for mdbook that renders diagrams in fenced code blocks using Kroki and works for html and other renderers."
+version = "0.1.0"
+edition = "2024"
+license = "Apache-2.0"
+
+[dependencies]
+base64 = "0.22.1"
+clap = { version = "4.5.31", features = ["derive", "cargo", "env", "unicode", "wrap_help"] }
+color-eyre = { version = "0.6.3", default-features = false }
+mdbook = "0.4.47"
+mime = "0.3.17"
+pulldown-cmark = "0.13.0"
+pulldown-cmark-to-cmark = "21.0.0"
+semver = "1.0.26"
+serde_json = "1.0.140"
+sha1 = "0.10.6"
+ureq = { version = "3.0.8", features = ["json"] }

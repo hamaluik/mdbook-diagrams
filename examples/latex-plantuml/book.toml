@@ -1,0 +1,17 @@
+[book]
+title = "latex plantuml example"
+description = "An example book that embeds a plantuml diagram using the pandoc renderer"
+authors = ["Kenton Hamaluik"]
+language = "en"
+
+[preprocessor.diagrams]
+output_format = "svg"
+kroki_url = "https://kroki.io"
+language_prefix = ""
+kroki_timeout_sec = 5
+filename_prefix = "diagram-"
+
+[output.pandoc.profile.pdf]
+output-file = "example.pdf"
+to = "latex"
+
