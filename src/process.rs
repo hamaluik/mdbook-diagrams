@@ -82,8 +82,9 @@ fn process_chapter(
     let mut diagram_type: Option<DiagramType> = None;
     let mut code_block_contents: Option<String> = None;
 
+    let parser_optons = pulldown_cmark::Options::all();
     let mut events = Vec::new();
-    for event in Parser::new(&chapter.content) {
+    for event in Parser::new_ext(&chapter.content, parser_optons) {
         let event = match event {
             Event::Start(Tag::CodeBlock(CodeBlockKind::Fenced(ref lang))) => {
                 diagram_type = code_lang_diagram_type(lang, config);
